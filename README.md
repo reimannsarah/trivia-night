@@ -1,17 +1,21 @@
-# (Application Name)
+# Animal Trivia
+#### Play some animal trivia!
 
-#### (Brief Description of Application)
-
-#### By (Your Name Here)
+#### By Sarah Reimann and Emma Gerigscott
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* _HTML_
+* _CSS_
+* _JavaScript_
+* _ESLint_
+* _Babel_
+* _Node.js_
+* _APIs_
 
 ## Description
+
+Choose how many questions and what difficulty you want for your animal trivia! Test your animal knowledge with this webpage. Created to practice accessing APIs, this webpage uses Open Trivia Database to generate the trivia questions.
 
 ## Setup/Installation Requirements
 
@@ -19,16 +23,11 @@
 * Build project using webpack with $ npm   run build
 * Start a development server with $ npm run start
 * Lint JS files in the src folder with $ npm run lint
-* Run tests with Jest using $ npm run test
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+* _Not that pretty TBH_
 
 ## License
+
+Copyright (c) 2023 Sarah Reimann and Emma Gerigscott
