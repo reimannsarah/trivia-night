@@ -74,8 +74,11 @@ function printElements(apiResponse) {
       const userAnswer = card.querySelector("input[type='radio']:checked").value;
       const check = checkQuestion(userAnswer, apiResponse, index);
       if (check === true) {
-        card.style.backgroundColor = "green";
-      } else { card.style.backgroundColor = "red";}
+        card.style.backgroundColor = "#FAFF81";
+      } else { 
+        card.style.backgroundColor = "#161032";
+        card.style.color = "white";
+      }
     });
   });
   outputDiv.append(submitBtn);

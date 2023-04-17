@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
-  background-color: lightblue;
+  background-color: #BAD7F2;
+  font-family: Lobster, monospace;
 } 
+
+h1 {
+  text-align: center;
+  color: #B26700;
+}
 #numOfQuestions {
   width: 300px;
 }
@@ -21,7 +29,7 @@ body {
 }
 
 .q-card {
-  background-color:cornsilk;
+  background-color: #E06D06;
   border-radius: 20px;
   width: 40%;
   height: 20vh;
