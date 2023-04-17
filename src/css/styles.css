@@ -1,3 +1,6 @@
 body {
   background-color: lightblue;
 } 
+#numOfQuestions {
+  width: 300px;
+}
