@@ -9,8 +9,26 @@ h1 {
   text-align: center;
   color: #B26700;
 }
+
+#input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+}
+
 #numOfQuestions {
   width: 300px;
+}
+
+#input-form > label {
+  padding: 10px;
+}
+
+#input-form button {
+  margin: 10px;
+
 }
 
 #q-cards {
@@ -21,17 +39,18 @@ h1 {
   gap: 20px;
   width: 80vw;
   padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #q-cards button {
   align-self: flex-end;
-  justify-self: center;
+  justify-self: flex-end;
 }
 
 .q-card {
   background-color: #E06D06;
   border-radius: 20px;
-  width: 40%;
+  width: 45%;
   height: 20vh;
   padding: 20px;
 }
@@ -39,3 +58,4 @@ h1 {
 input[type="radio"] {
   margin: 10px;
 }
+
