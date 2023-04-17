@@ -4,3 +4,30 @@ body {
 #numOfQuestions {
   width: 300px;
 }
+
+#q-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  gap: 20px;
+  width: 80vw;
+  padding: 20px;
+}
+
+#q-cards button {
+  align-self: flex-end;
+  justify-self: center;
+}
+
+.q-card {
+  background-color:cornsilk;
+  border-radius: 20px;
+  width: 40%;
+  height: 20vh;
+  padding: 20px;
+}
+
+input[type="radio"] {
+  margin: 10px;
+}
