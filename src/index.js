@@ -2,6 +2,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
+
+// business logic
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -11,8 +14,6 @@ function shuffleArray(array) {
   }
   return array;
 }
-
-
 
 function getTrivia(questions, difficulty) {
   let request = new XMLHttpRequest();
@@ -28,8 +29,18 @@ function getTrivia(questions, difficulty) {
   request.send();
 }
 
+function checkQuestion(answer, response, index) {
+  const correct = response.results[index].correct_answer;
+  if (answer === correct) {
+    return true;
+  } else { return false; }
+}
+
+// UI logic
+
 function printElements(apiResponse) {
   const outputDiv = document.querySelector('#q-cards');
+  const submitBtn = document.createElement("button");
   apiResponse.results.forEach((element, index) => {
     const div = document.createElement("div");
     div.classList = "q-card";
@@ -52,12 +63,23 @@ function printElements(apiResponse) {
       label.innerText = q;
       div.append(radio, label, br);
     });
-
-    outputDiv.prepend(div);
+    outputDiv.append(div);
   });
-
+  submitBtn.type = "submit";
+  submitBtn.innerText = "Check Answers";
+  outputDiv.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const allCards = document.querySelectorAll(".q-card");
+    allCards.forEach((card, index) => {
+      const userAnswer = card.querySelector("input[type='radio']:checked").value;
+      const check = checkQuestion(userAnswer, apiResponse, index);
+      if (check === true) {
+        card.style.backgroundColor = "green";
+      } else { card.style.backgroundColor = "red";}
+    });
+  });
+  outputDiv.append(submitBtn);
 }
-
 
 function handleFormSubmission(e) {
   e.preventDefault();
@@ -65,9 +87,6 @@ function handleFormSubmission(e) {
   const difficulty = document.getElementById("difficulty").value;
   getTrivia(numOfQs, difficulty);
 }
-
-
-
 
 window.addEventListener("load", function() {
   this.document.querySelector("form").addEventListener("submit", handleFormSubmission);
