@@ -1,6 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
+import TriviaService from './trivia-service';
 
 
 // business logic
@@ -15,20 +16,14 @@ function shuffleArray(array) {
   return array;
 }
 
-function getTrivia(questions, difficulty) {
-  let request = new XMLHttpRequest();
-  const url = `https://opentdb.com/api.php?amount=${questions}&category=27&difficulty=${difficulty}&type=multiple`;
-
-  request.addEventListener("loadend", function() {
-    const response = JSON.parse(this.responseText);
-    if (this.status === 200) {
-      printElements(response);
-    }
+function getUserTrivia(questions, difficulty) {
+  let promise = TriviaService.getTrivia(questions, difficulty);
+  promise.then(function(trivia) {
+    printElements(trivia);
+  }, function(errorMessage) {
+    printError(errorMessage);
   });
-  request.open("GET", url, true);
-  request.send();
 }
-
 function checkQuestion(answer, response, index) {
   const correct = response.results[index].correct_answer;
   if (answer === correct) {
@@ -39,6 +34,7 @@ function checkQuestion(answer, response, index) {
 // UI logic
 
 function printElements(apiResponse) {
+  console.log(apiResponse);
   const outputDiv = document.querySelector('#q-cards');
   const submitBtn = document.createElement("button");
   apiResponse.results.forEach((element, index) => {
@@ -84,11 +80,14 @@ function printElements(apiResponse) {
   outputDiv.append(submitBtn);
 }
 
+function printError(errorMessage) {
+  document.querySelector("#error-msg").innerText = errorMessage;
+}
 function handleFormSubmission(e) {
   e.preventDefault();
   const numOfQs = document.getElementById("numOfQuestions").value;
   const difficulty = document.getElementById("difficulty").value;
-  getTrivia(numOfQs, difficulty);
+  getUserTrivia(numOfQs, difficulty);
 }
 
 window.addEventListener("load", function() {
